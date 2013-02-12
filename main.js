@@ -1,5 +1,4 @@
 (function ($) {
-    var delay = 30000;
     var f = function() {
         var cursorPalette = {
             '_':'rgba(  0,  0,  0,  0.0)',
@@ -56,21 +55,21 @@
         var size = {width:$(link).width(), height:$(link).height()};
 
         // RED
+        var padding = 10;
         var red = $('<div>').css({
-            'width':size.width,
-            'height':size.height,
+            'width':size.width + padding * 2,
+            'height':size.height + padding * 2,
             'position':'absolute',
-            'top':offset.top,
-            'left':offset.left,
+            'top':offset.top - padding,
+            'left':offset.left - padding,
             'background-color':'red',
             'opacity':0.5});
-        $('body').append(red);
-
+ 
         // CURSOR
         var scale = 5;
         var cursor = $('<canvas width="' + cursorBmp[0].length * scale + 'px" height="' + cursorBmp.length * scale + 'px">').css({
             'position':'absolute',
-            'top':offset.top + size.height / 2,
+            'top':offset.top + size.height / 2 + 40,
             'left':offset.left + (size.width / 2) - (6 * scale),
             'z-index':99999
         });
@@ -83,11 +82,24 @@
                 context.fillRect(xIndex * scale, yIndex * scale, scale, scale);
             }
         }
-        $('body').append(cursor);
         
         // SCROLL
-        $('html,body')
-            .animate({ scrollTop: offset.top - 300}, 'slow', function(){
+        var curTop = $(window).scrollTop();
+        $('body')
+            .animate(
+                // SCROLL TO BOTTOM
+                {scrollTop: curTop + 300},
+                {
+                    duration: 10000,
+                    complete: function(){
+                        $(this).stop();
+                        $('body').append(red).append(cursor);
+                        cursor.animate({'top':offset.top + size.height / 2}, 1200);
+                    }
+                }
+            )
+            .animate({scrollTop: offset.top - 300}, 1000, function(){
+                // SCROLL TO CURSOR
                 $(link)
                 .animate({'opacity':0}, 200)
                 .animate({'opacity':1}, 200)
@@ -105,10 +117,10 @@
                         red.remove();
                         cursor.remove();
 
-                        setTimeout(f, delay);
+                        setTimeout(f, 3000);
                     }, 2000);
                 });
             });
     };
-    setTimeout(f, delay);
+    setTimeout(f, 5000);
 })(jQuery);
