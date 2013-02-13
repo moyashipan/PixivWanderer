@@ -92,6 +92,14 @@
                 {
                     duration: 10000,
                     complete: function(){
+                        // TODO:use localStorage of extention
+                        var count = localStorage['framedView']++;
+                        if (isNaN(count) || count > 20) {
+                            $(this).stop(true, false);
+                            location.href = 'http://www.pixiv.net/';
+                            localStorage['framedView'] = 0;
+                            return;
+                        }
                         $(this).stop();
                         $('body').append(red).append(cursor);
                         cursor.animate({'top':offset.top + size.height / 2}, 1200);
