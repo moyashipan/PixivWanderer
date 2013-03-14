@@ -29,8 +29,8 @@
         '_____B........B__',
         '_____BBBBBBBBBB__',
         ];
-        var pattern = /^http:\/\/www\.pixiv\.(net|com)\//;
-        //var pattern = /^http:\/\/www\.pixiv\.net\//;
+        //var pattern = /^http:\/\/www\.pixiv\.(net|com)\//;
+        var pattern = /^http:\/\/www\.pixiv\.net\//;
         //var pattern = /^http:\/\/(.*?)\.pixiv\.net\//;
      
         var ignores = ['http://www.pixiv.net/logout.php'];
