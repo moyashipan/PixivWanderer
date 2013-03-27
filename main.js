@@ -29,11 +29,19 @@
         '_____B........B__',
         '_____BBBBBBBBBB__',
         ];
-        //var pattern = /^http:\/\/www\.pixiv\.(net|com)\//;
-        var pattern = /^http:\/\/www\.pixiv\.net\//;
-        //var pattern = /^http:\/\/(.*?)\.pixiv\.net\//;
-     
-        var ignores = ['http://www.pixiv.net/logout.php'];
+	
+	var patterns = [
+		'http://www.pixiv.net/',
+		'http://www.pixiv.com/',
+		'http://ja.worldcosplay.net/'
+	];    
+ 
+        var ignores = [
+		'http://www.pixiv.net/logout.php',
+		'http://ja.curecos.com/logout/',
+		'http://www.pixiv.com/auth/facebook',
+		'http://www.pixiv.com/accounts/new'
+	];
      
         var links = [];
         var tempLinks = $('a');
@@ -42,8 +50,11 @@
             if (this.href == location.href) return;
             if (this.href == location.href + '#') return;
             if ($(this).offset().top == 0) return;
-            if (this.href.match(pattern)) {
-                links.push(this);
+            for (var i in patterns) {
+		if (this.href.indexOf(patterns[i]) == 0) {
+		    links.push(this);
+		    break;
+		}
             }
         });
         if (!links.length) {
@@ -96,7 +107,7 @@
                         var count = localStorage['framedView']++;
                         if (isNaN(count) || count > 20) {
                             $(this).stop(true, false);
-                            location.href = 'http://www.pixiv.net/';
+                            location.href = patterns[Math.floor(Math.random() * patterns.length)];
                             localStorage['framedView'] = 0;
                             return;
                         }

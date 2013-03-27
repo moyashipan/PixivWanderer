@@ -14,7 +14,8 @@
         {
             "matches": [
                 "http://www.pixiv.net/*",
-                "http://www.pixiv.com/*"
+                "http://www.pixiv.com/*",
+		"http://ja.worldcosplay.net/*"
             ],
             "js": ["lib/jquery-1.9.1.min.js", "main.js"]
         }
