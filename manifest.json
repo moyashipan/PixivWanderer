@@ -1,6 +1,6 @@
 {
     "name": "pixivぶらり旅",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "manifest_version": 2,
         "description": "pixiv内のリンクをランダムに踏んで歩きます",
         "icons": {
