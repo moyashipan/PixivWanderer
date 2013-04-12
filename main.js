@@ -1,4 +1,11 @@
 (function ($) {
+	chrome.runtime.onMessage.addListener(
+		function(request, sender, sendResponse) {
+			f();
+			sendResponse({});
+		}
+	 );
+
     var f = function() {
         var cursorPalette = {
             '_':'rgba(  0,  0,  0,  0.0)',
@@ -141,5 +148,5 @@
                 });
             });
     };
-    setTimeout(f, 5000);
+    // setTimeout(f, 5000);
 })(jQuery);

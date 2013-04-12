@@ -1,24 +1,32 @@
 {
     "name": "pixivぶらり旅",
-        "version": "0.0.2",
-        "manifest_version": 2,
-        "description": "pixiv内のリンクをランダムに踏んで歩きます",
-        "icons": {
-            "128": "icon128.png"
-        },
-        "browser_action": {
-            "default_icon": "icon128.png",
-            "default_title": "pixivぶらり旅"
-        },
-        "content_scripts": [
+    "version": "0.1.2",
+    "manifest_version": 2,
+    "description": "pixiv内のリンクをランダムに踏んで歩きます",
+    "icons": {
+        "128": "icon128.png"
+    },
+    "browser_action": {
+        "default_icon": "icon128.png",
+        "default_title": "pixivぶらり旅",
+	"default_popup": "popup.html"
+    },
+    "content_scripts": [
         {
             "matches": [
-                "http://www.pixiv.net/*",
-                "http://www.pixiv.com/*",
-		"http://ja.worldcosplay.net/*"
+                "http://*/*",
+                "https://*/*"
             ],
             "js": ["lib/jquery-1.9.1.min.js", "main.js"]
         }
     ],
-    "content_security_policy": "script-src 'self'; object-src 'self'"
+    "background": {
+		"page":"background.html",
+        "persistent": false
+    },
+    "permissions":[
+        "tabs",
+        "background",
+        "webNavigation"
+    ]
 }

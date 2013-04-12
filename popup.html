@@ -1,0 +1,85 @@
+<html>
+<head>
+<meta charset="utf-8">
+<script charset="utf-8" src="lib/jquery-1.9.1.min.js"></script>
+<script charset="utf-8" src="lib/config.js"></script>
+<script charset="utf-8" src="popup.js"></script>
+
+<!--
+bgColor: #F0F0F0
+baseColor: #2266AF
+subColor: #558BC6
+subColor: #B3CCE8
+subColor: #D8E6F4
+-->
+
+<style>
+body {
+	width: 600px;
+	background-color: #F8F8F8;
+	overflow: scroll;
+	font-size: .8em;
+}
+div#head_button_container {
+}
+div.clear {
+    clear: both;
+}
+button#btn_start_wander{
+	float:right;
+	padding: 8px 16px;
+	border-radius: 4px;
+	border: 2px solid rgba(0, 0, 0, 0.1);
+	border-top: 2px solid rgba(255, 255, 255, 0.1);
+	color: #F0F0F0;
+	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(1, #2876c9), color-stop(0, #2266AF));
+	cursor: pointer;
+}
+button#btn_start_wander:hover, button#btn_stop_wander:hover{
+	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(1, #2266AF), color-stop(0, #2876c9));
+}
+*[id^=tpl_] {
+	display: none;
+}
+
+#target_tabs_container ul {
+	-webkit-padding-start: 0px;
+	list-style-type: none;
+}
+#target_tabs_container ul li {
+	border-radius: 3px;
+	border: 1px solid rgba(0,0,0,0.1);
+	background-color: #558BC6;
+	padding: 4px;
+	margin-bottom: 4px;
+	cursor: pointer;
+}
+#target_tabs_container ul li img {
+	border-radius: 3px;
+	background-color: #f0f0f0;
+	padding: 4px;
+	margin-right: 4px;
+	vertical-align: middle;
+	width: 16px;
+	height: 16px;
+}
+#target_tabs_container ul li span{
+	padding: 4px;
+	vertical-align: middle;
+}
+</style>
+</head>
+<body>
+<div id="head_button_container">
+	<button id="btn_start_wander">このタブをぶらつかせる</button>
+</div>
+<div class="clear"></div>
+<hr>
+<div id="target_tabs_container">
+	<h4>ぶらついてるタブ一覧 (クリックで削除)</h4>
+	<ul>
+		<li id="tpl_target_tab"><img src="" /><span>hoge</span></li>
+	</ul>
+</dvi>
+</body>
+</html>
